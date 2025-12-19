@@ -6,7 +6,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (!vantaEffect.current && vantaRef.current && (window as any).VANTA) {
-      vantaEffect.current = (window as any).VANTA.GLOBE({
+      vantaEffect.current = (window as any).VANTA.NET({
         el: vantaRef.current,
       
         mouseControls: true,
