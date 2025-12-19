@@ -26,7 +26,7 @@ const Hero = () => {
         // Ultra-luxury color palette
         color: 0xe5e5e5,      // primary rings (soft platinum)
         color2: 0x9b9b9b,     // highlights
-        backgroundColor: 0x0d0d0d, // deep black
+        backgroundColor: 0x000000, // deep black
 
         speed: 0.2,            // premium slow movement
         quantity: 5,           // rings count
