@@ -28,8 +28,8 @@ const Hero = () => {
         color2: 0x9b9b9b,     // highlights
         backgroundColor: 0x000000, // deep black
 
-        speed: 0.2,            // premium slow movement
-        quantity: 5,           // rings count
+        speed: 0.1,            // premium slow movement
+        quantity: 8,           // rings count
         spacing: 30,           // ring spacing
       });
     }
@@ -67,9 +67,7 @@ const Hero = () => {
 
         {/* Hero statement */}
         <p className="max-w-xl text-sm sm:text-base md:text-lg text-white/70 leading-relaxed">
-          We craft refined digital experiences for developers and modern businesses.
-          Precision, clarity, and performance, designed for a premium audience.
-        </p>
+          We craft refined digital experiences for developers and modern businesses. Precision, clarity, and performance, designed for a premium audience.       </p>
 
         {/* CTAs */}
         <div className="mt-14 flex flex-col sm:flex-row gap-4">

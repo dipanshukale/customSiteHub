@@ -29,7 +29,7 @@ const Navbar = () => {
 
               {/* LOGO */}
               <span className="text-[13px] tracking-[0.35em] uppercase text-white/85 select-none">
-                CUSTOMSITEHUB
+              Custom<span className="text-white/40">Site</span>Hub
               </span>
 
               {/* DESKTOP LINKS */}
@@ -58,7 +58,7 @@ const Navbar = () => {
               {/* MOBILE MENU TOGGLE */}
               <button
                 onClick={() => setMenuOpen((p) => !p)}
-                className="md:hidden text-[11px] tracking-widest text-white/70"
+                className="md:hidden  text-[11px] tracking-widest text-white/70"
               >
                 {menuOpen ? "CLOSE" : "MENU"}
               </button>
