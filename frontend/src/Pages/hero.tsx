@@ -6,7 +6,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (!vantaEffect.current && vantaRef.current && (window as any).VANTA) {
-      vantaEffect.current = (window as any).VANTA.NET({
+      vantaEffect.current = (window as any).VANTA.RINGS({
         el: vantaRef.current,
       
         mouseControls: true,
