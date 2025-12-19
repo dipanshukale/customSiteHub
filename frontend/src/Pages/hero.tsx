@@ -63,7 +63,7 @@ const Hero = () => {
         </h1>
 
         {/* Divider */}
-        <div className="my-10 w-28 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto" />
+        <div className="my-10 w-28 h-px bg-gradient-to-r animate-pulse from-transparent via-white/30 to-transparent mx-auto" />
 
         {/* Hero statement */}
         <p className="max-w-xl text-sm sm:text-base md:text-lg text-white/70 leading-relaxed">

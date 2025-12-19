@@ -44,7 +44,6 @@ const Services = () => {
       id="services"
       className="relative bg-black text-white px-6 sm:px-10 md:px-16 py-28"
     >
-      {/* ================= HEADER ================= */}
       <div className="max-w-6xl mx-auto mb-24 text-center">
         <span className="block text-[11px] tracking-[0.45em] uppercase text-white/50 mb-6">
           Services
@@ -60,7 +59,6 @@ const Services = () => {
         </p>
       </div>
 
-      {/* ================= GRID ================= */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
         {services.map((service, i) => (
           <motion.div
@@ -70,7 +68,6 @@ const Services = () => {
             transition={{ delay: i * 0.12, duration: 1 }}
             className="group relative cursor-pointer"
           >
-            {/* IMAGE */}
             <div className="relative overflow-hidden rounded-3xl">
               <img
                 src={service.image}
@@ -85,7 +82,6 @@ const Services = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/80" />
             </div>
 
-            {/* CONTENT */}
             <div className="relative mt-10">
               <span className="text-[10px] tracking-[0.35em] uppercase text-white/45">
                 {service.eyebrow}
@@ -101,7 +97,6 @@ const Services = () => {
                 {service.desc}
               </p>
 
-              {/* LEARN MORE */}
               <div className="mt-6">
                 <span
                   onClick={() => toggle(i)}
@@ -129,7 +124,6 @@ const Services = () => {
         ))}
       </div>
 
-      {/* ================= FOOT CTA ================= */}
       <div className="mt-32 text-center">
         <a
           href="#contact"
