@@ -14,6 +14,8 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  
 }
 
 
@@ -25,10 +27,39 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 
+  width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
 
 }
+
+/* Swiper pagination container */
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px; /* spacing from slider */
+}
+
+/* Custom horizontal bullets */
+.custom-bullet {
+  display: inline-block;
+  height: 4px; /* thickness of the bar */
+  width: 24px; /* default width for inactive */
+  background-color: rgba(255, 255, 255, 0.659);
+  border-radius: 2px; /* slightly rounded ends */
+  transition: all 0.3s ease;
+}
+
+/* Active bullet */
+.swiper-pagination-bullet-active.custom-bullet {
+  width: 36px; /* longer active indicator */
+  background-color: white; /* bright white */
+}
+
 
 
 @keyframes logo {
@@ -40,6 +71,10 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .animate-logo {

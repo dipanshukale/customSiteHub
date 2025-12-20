@@ -1,77 +1,137 @@
-import {
-    FaReact,
-    FaNodeJs,
-    FaDocker,
-  } from "react-icons/fa";
-  import {
-    SiTailwindcss,
-    SiTypescript,
-    SiExpress,
-  } from "react-icons/si";
-  
-  const techStack = [
-    { name: "React", icon: FaReact },
-    { name: "TypeScript", icon: SiTypescript },
-    { name: "Node.js", icon: FaNodeJs },
-    { name: "Express", icon: SiExpress },
-    { name: "Tailwind CSS", icon: SiTailwindcss },
-    { name: "Docker", icon: FaDocker },
-  ];
-  
-  const TrustStrip = () => {
-    return (
-      <section className="relative w-full bg-black px-5 sm:px-6 pt-16 sm:pt-20 pb-0">
-        <div className="mx-auto max-w-6xl text-center">
-  
-          {/* TITLE */}
-          <h2 className="text-[14px] sm:text-[16px] tracking-[0.32em] uppercase text-white/85">
-            Technologies trusted by modern teams
-          </h2>
-  
-          {/* DESCRIPTION */}
-          <p className="mx-auto mt-4 max-w-md sm:max-w-xl text-[13px] sm:text-[14px] leading-relaxed text-white/50">
-            Built with proven technologies used by startups and growing businesses worldwide.
-          </p>
-  
-          {/* MICRO DIVIDER */}
-          <div className="flex justify-center my-5 sm:my-6">
-            <div className="w-px h-6 bg-white/20" />
-          </div>
-  
-          {/* TECH GRID */}
-          <div
-            className="
-              mx-auto max-w-4xl
-              grid grid-cols-2
-              sm:grid-cols-3
-              md:grid-cols-4
-              lg:grid-cols-6
-              gap-y-10 sm:gap-y-12
-              place-items-center
-            "
-          >
-            {techStack.map(({ name, icon: Icon }) => (
+import { FaReact, FaNodeJs, FaDocker } from "react-icons/fa";
+import { SiTailwindcss, SiTypescript, SiExpress } from "react-icons/si";
+import { motion } from "framer-motion";
+
+const techStack = [
+  { name: "React", icon: FaReact, color: "#61DAFB" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+  { name: "Express", icon: SiExpress, color: "#ffffff" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
+  { name: "Docker", icon: FaDocker, color: "#2496ED" },
+];
+
+const TrustStrip = () => {
+  return (
+    <section className="relative w-full bg-black py-20 sm:py-24 overflow-hidden">
+      {/* Background glow */}
+      <motion.div
+        className="absolute inset-0 -z-10"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
+      >
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white/5"
+            style={{
+              width: 140 + i * 30,
+              height: 140 + i * 30,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: [0, 40, -40, 0],
+              y: [0, -30, 30, 0],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 30 + i * 6,
+            }}
+          />
+        ))}
+      </motion.div>
+
+      <div className="max-w-6xl mx-auto text-center px-5 sm:px-6">
+      <h2
+  className="
+    text-4xl
+    sm:text-6xl
+    md:text-7xl
+    font-extralight
+    tracking-tight
+    leading-[1.05]
+    font-['Montserrat']
+  "
+>
+  <span className="text-white/85">Production</span>{" "}
+  <span className="text-white/45">Stack</span>{" "}
+</h2>
+
+
+
+
+        {/* Description */}
+        <p className="mt-4 max-w-3xl mx-auto text-white/50 text-lg sm:text-xl leading-relaxed">
+          We leverage the latest technologies to craft scalable, high-performance
+          digital solutions that empower businesses worldwide.
+        </p>
+
+        {/* Divider */}
+        <div className="w-20 h-[2px] bg-gradient-to-r from-white/20 via-white/50 to-white/20 mx-auto mt-6 rounded-full" />
+
+        {/* Tech Carousel */}
+        <motion.div
+          className="
+            mt-12
+            flex
+            gap-8
+            items-stretch
+            justify-start
+            md:justify-center
+            overflow-x-auto
+            py-6
+            px-2
+            scrollbar-thin
+            scrollbar-thumb-white/20
+            scrollbar-track-black/10
+          "
+          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+        >
+          {techStack.map(({ name, icon: Icon, color }, i) => (
+            <motion.div
+              key={name}
+              className="
+                min-w-[120px]
+                sm:min-w-[140px]
+                bg-black/80
+                backdrop-blur-md
+                rounded-3xl
+                flex
+                flex-col
+                items-center
+                justify-center
+                text-center
+                gap-3
+                p-6
+                shadow-xl
+                hover:shadow-2xl
+                transition-all
+              "
+              whileHover={{ scale: 1.06, y: -6 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.12, type: "spring", stiffness: 120 }}
+            >
               <div
-                key={name}
-                className="
-                  flex flex-col items-center gap-3
-                  text-white/35
-                  hover:text-white/70
-                  transition-colors duration-300
-                "
+                className="p-4 rounded-full"
+                style={{
+                  background: `linear-gradient(135deg, ${color}33, transparent)`,
+                }}
               >
-                <Icon className="text-[26px] sm:text-[28px] md:text-[30px]" />
-                <span className="text-[10px] tracking-widest uppercase">
-                  {name}
-                </span>
+                <Icon className="text-4xl sm:text-5xl text-white" />
               </div>
-            ))}
-          </div>
-  
-        </div>
-      </section>
-    );
-  };
-  
-  export default TrustStrip;
-  
+
+              <span className="text-white/60 text-xs sm:text-sm font-semibold uppercase tracking-wide">
+                {name}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default TrustStrip;
