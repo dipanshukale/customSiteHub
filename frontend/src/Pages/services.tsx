@@ -124,7 +124,7 @@ const Services = () => {
         ))}
       </div>
 
-      <div className="mt-32 text-center">
+      <div className="mt-16 lg:mb-6 mb-8 text-center">
         <a
           href="#contact"
           className="inline-flex items-center gap-3 rounded-full border border-white/20 px-10 py-4 text-[12px] tracking-widest uppercase text-white/80 hover:border-white/40 transition"
