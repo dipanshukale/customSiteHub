@@ -1,136 +1,210 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
     eyebrow: "Core Capability",
     title: "Web Development",
-    desc: "High-performance websites engineered to convert attention into growth. Built fast, scalable, and future-ready.",
-    more: "We specialize in React, TypeScript, Node.js, and Tailwind CSS to deliver ultra-modern websites. Your brand will shine with clean design, performance, and scalability.",
+    desc: "High-performance websites engineered to convert attention into growth.",
+    more: "We build scalable systems using React, TypeScript, Node.js, and Tailwind with obsessive attention to performance and longevity.",
     image: "./web development.jpg",
   },
   {
     eyebrow: "Engineering",
     title: "Product Development",
-    desc: "From MVP to production systems, we architect products developers love and businesses rely on.",
-    more: "Our team handles architecture, APIs, and seamless deployment. We ensure maintainable code, automated testing, and high-performance systems.",
+    desc: "From MVPs to production-grade platforms.",
+    more: "Architecture, APIs, testing, and deployment handled with real-world scalability in mind.",
     image: "./product.jpg",
   },
   {
     eyebrow: "Growth Systems",
     title: "Digital Marketing",
-    desc: "SEO-ready builds, conversion-focused UX, and marketing systems designed to scale revenue, not vanity metrics.",
-    more: "We combine marketing strategy, analytics, and UX/UI design to drive conversions, engagement, and measurable growth for your brand.",
+    desc: "SEO-ready builds and conversion-focused UX.",
+    more: "Analytics-driven decisions, UX strategy, and performance marketing without vanity metrics.",
     image: "./digital growth.jpg",
   },
   {
     eyebrow: "Creative Studio",
     title: "Motion & Video",
-    desc: "Cinematic motion design and premium video editing that elevates brand perception and engagement.",
-    more: "We create video campaigns, motion graphics, and animated content that amplifies storytelling and strengthens brand identity.",
+    desc: "Cinematic visuals that elevate brand perception.",
+    more: "Premium motion design and storytelling crafted for modern digital brands.",
     image: "./video editing.jpg",
   },
 ];
 
 const Services = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const [expanded, setExpanded] = useState<number | null>(null);
 
-  const toggle = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+  /* Auto-detect active slide (Apple-like focus) */
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const cards = Array.from(el.children);
+      const center = el.scrollLeft + el.offsetWidth / 2;
+
+      cards.forEach((card, i) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        if (Math.abs(cardCenter - window.innerWidth / 2) < rect.width / 2) {
+          setActive(i);
+        }
+      });
+    };
+
+    el.addEventListener("scroll", onScroll);
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <section
-      id="services"
-      className="relative bg-black text-white px-6 sm:px-10 md:px-16 py-28"
-    >
-      <div className="max-w-6xl mx-auto mb-24 text-center">
-        <span className="block text-[11px] tracking-[0.45em] uppercase text-white/50 mb-6">
+    <section id="services" className="bg-black text-white py-28 overflow-hidden">
+
+      {/* HEADER */}
+      <div className="px-6 text-center mb-20">
+        <span className="text-[11px] tracking-[0.45em] uppercase text-white/50">
           Services
         </span>
 
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight max-w-3xl mx-auto">
-          What our freelancers are exceptional at
+        <h2 className="mt-6 text-4xl sm:text-5xl font-light tracking-tight">
+          Crafted with intent
         </h2>
 
-        <p className="mt-8 max-w-xl mx-auto text-sm sm:text-base text-white/60 leading-relaxed">
-          We design and develop digital systems that help businesses grow,
-          scale, and stand out — without unnecessary complexity.
+        <p className="mt-6 text-white/60 max-w-md mx-auto">
+          Calm systems, engineered for scale and long-term digital growth.
         </p>
       </div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
-        {services.map((service, i) => (
-          <motion.div
-            key={service.title}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.12, duration: 1 }}
-            className="group relative cursor-pointer"
-          >
-            <div className="relative overflow-hidden rounded-3xl">
-              <img
-                src={service.image}
-                alt={service.title}
-                className="
-                  h-[260px] sm:h-[320px] w-full object-cover
-                  transition-transform duration-[1400ms]
-                  ease-[cubic-bezier(.19,1,.22,1)]
-                  group-hover:scale-110
-                "
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/80" />
-            </div>
+      {/* ================= MOBILE ULTRA LUXURY ================= */}
+      <div className="md:hidden relative">
 
-            <div className="relative mt-10">
-              <span className="text-[10px] tracking-[0.35em] uppercase text-white/45">
-                {service.eyebrow}
-              </span>
+        <div
+          ref={containerRef}
+          className="
+            flex gap-10 px-8
+            overflow-x-auto snap-x snap-mandatory
+            scrollbar-hide
+          "
+        >
+          {services.map((s, i) => (
+            <motion.div
+              key={s.title}
+              className="snap-center min-w-[85vw]"
+              animate={{
+                scale: active === i ? 1 : 0.92,
+                opacity: active === i ? 1 : 0.5,
+              }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* IMAGE */}
+              <motion.div
+                className="relative overflow-hidden rounded-[28px]"
+                animate={{ y: active === i ? 0 : 20 }}
+                transition={{ duration: 0.6 }}
+              >
+                <motion.img
+                  src={s.image}
+                  alt={s.title}
+                  className="h-[280px] w-full object-cover"
+                  animate={{ scale: active === i ? 1.05 : 1 }}
+                  transition={{ duration: 1.2 }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              </motion.div>
 
-              <h3 className="mt-4 text-2xl sm:text-3xl font-light tracking-tight">
-                {service.title}
-              </h3>
-
-              <div className="mt-6 h-px w-10 bg-white/20" />
-
-              <p className="mt-6 text-sm sm:text-[15px] text-white/60 leading-relaxed max-w-md">
-                {service.desc}
-              </p>
-
-              <div className="mt-6">
-                <span
-                  onClick={() => toggle(i)}
-                  className="inline-block text-[11px] tracking-widest uppercase text-white/70 group-hover:text-white transition cursor-pointer"
-                >
-                  {activeIndex === i ? "Show Less ↑" : "Learn More →"}
+              {/* CONTENT */}
+              <div className="mt-10 px-2">
+                <span className="text-[10px] tracking-[0.35em] uppercase text-white/45">
+                  {s.eyebrow}
                 </span>
 
+                <h3 className="mt-3 text-2xl font-light">
+                  {s.title}
+                </h3>
+
+                <p className="mt-4 text-white/60 leading-relaxed">
+                  {s.desc}
+                </p>
+
+                <button
+                  onClick={() => setExpanded(expanded === i ? null : i)}
+                  className="mt-6 text-[11px] tracking-widest uppercase text-white/70"
+                >
+                  {expanded === i ? "Close ↑" : "Learn More →"}
+                </button>
+
                 <AnimatePresence>
-                  {activeIndex === i && (
+                  {expanded === i && (
                     <motion.p
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="mt-4 text-white/60 text-sm sm:text-[15px] leading-relaxed max-w-md"
+                      transition={{ duration: 0.4 }}
+                      className="mt-4 text-white/60 text-sm leading-relaxed"
                     >
-                      {service.more}
+                      {s.more}
                     </motion.p>
                   )}
                 </AnimatePresence>
               </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* PROGRESS DOTS */}
+        <div className="mt-10 flex justify-center gap-3">
+          {services.map((_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                active === i ? "w-8 bg-white" : "w-2 bg-white/30"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* SWIPE HINT */}
+        <div className="mt-6 text-center text-[10px] tracking-[0.35em] uppercase text-white/40">
+          Swipe
+        </div>
+      </div>
+
+      {/* ================= DESKTOP GRID (UNCHANGED PREMIUM) ================= */}
+      <div className="hidden md:grid max-w-6xl mx-auto grid-cols-2 gap-20 px-6 mt-32">
+        {services.map((s, i) => (
+          <motion.div
+            key={s.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.12, duration: 1 }}
+          >
+            <div className="relative overflow-hidden rounded-3xl">
+              <img
+                src={s.image}
+                alt={s.title}
+                className="h-[320px] w-full object-cover transition-transform duration-[1400ms] hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/80" />
+            </div>
+
+            <div className="mt-10">
+              <span className="text-[10px] tracking-[0.35em] uppercase text-white/45">
+                {s.eyebrow}
+              </span>
+
+              <h3 className="mt-4 text-3xl font-light">
+                {s.title}
+              </h3>
+
+              <p className="mt-6 text-white/60 max-w-md">
+                {s.desc}
+              </p>
             </div>
           </motion.div>
         ))}
-      </div>
-
-      <div className="mt-16 lg:mb-6 mb-8 text-center">
-        <a
-          href="#contact"
-          className="inline-flex items-center gap-3 rounded-full border border-white/20 px-10 py-4 text-[12px] tracking-widest uppercase text-white/80 hover:border-white/40 transition"
-        >
-          View All Services
-        </a>
       </div>
     </section>
   );

@@ -50,6 +50,15 @@ body {
   animation: fade-in 0.8s ease-out forwards;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
 /* Apple-like scroll easing */
 * {
   scroll-behavior: smooth;
