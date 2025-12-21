@@ -40,7 +40,7 @@ const Services = () => {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section className="relative bg-black text-white py-28 px-4 md:px-12 overflow-hidden -mt-20">
+    <section className="relative bg-black text-white py-28 px-4 md:px-12 overflow-hidden">
       {/* ================= HEADER ================= */}
       <div className="relative max-w-3xl mx-auto text-center">
         {/* Animated floating dots */}

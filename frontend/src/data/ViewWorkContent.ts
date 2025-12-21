@@ -3,7 +3,7 @@ export const viewWork = [
       id: "crafticrazy",
       title: "CraftiCrazy",
       category: "Creative Commerce Platform",
-      image: "/craft.jpg",
+      image: "./craft.jpg",
       live: "https://craftcrazycom.vercel.app/",
   
       story: `
@@ -46,7 +46,7 @@ export const viewWork = [
       id: "restaurant-qr",
       title: "Restaurant QR Ordering System",
       category: "Operational Automation",
-      image: "/restaurant.jpg",
+      image: "./restaurant.jpg",
       live: "https://restaurantwebsite-frontend.onrender.com/",
   
       story: `
@@ -86,7 +86,7 @@ export const viewWork = [
       id: "homemealhub",
       title: "HomeMealHub",
       category: "Subscription Food Platform",
-      image: "/HomeMeal.jpg",
+      image: "./HomeMeal.jpg",
       live: "https://homemealhub-frontend.onrender.com/",
   
       story: `

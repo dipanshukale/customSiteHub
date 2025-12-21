@@ -1,137 +1,131 @@
-import { FaReact, FaNodeJs, FaDocker } from "react-icons/fa";
-import { SiTailwindcss, SiTypescript, SiExpress } from "react-icons/si";
 import { motion } from "framer-motion";
+import {
+  HiOutlineCpuChip,
+  HiOutlineRocketLaunch,
+  HiOutlineServerStack,
+  HiOutlineCloudArrowUp,
+} from "react-icons/hi2";
 
-const techStack = [
-  { name: "React", icon: FaReact, color: "#61DAFB" },
-  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-  { name: "Node.js", icon: FaNodeJs, color: "#339933" },
-  { name: "Express", icon: SiExpress, color: "#ffffff" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
-  { name: "Docker", icon: FaDocker, color: "#2496ED" },
+const items = [
+  {
+    icon: HiOutlineCpuChip,
+    title: "Modern Stack",
+    subtitle: "React · TypeScript · Node",
+    gradient: "from-sky-400/30 to-blue-500/30",
+  },
+  {
+    icon: HiOutlineRocketLaunch,
+    title: "High Performance",
+    subtitle: "Optimized & fast",
+    gradient: "from-violet-400/30 to-purple-500/30",
+  },
+  {
+    icon: HiOutlineServerStack,
+    title: "Scalable APIs",
+    subtitle: "Production ready",
+    gradient: "from-emerald-400/30 to-teal-500/30",
+  },
+  {
+    icon: HiOutlineCloudArrowUp,
+    title: "Cloud Deployed",
+    subtitle: "Docker · CI/CD",
+    gradient: "from-orange-400/30 to-amber-500/30",
+  },
 ];
 
-const TrustStrip = () => {
+export default function TrustStrip() {
   return (
-    <section className="relative w-full bg-black py-20 sm:py-24 overflow-hidden">
-      {/* Background glow */}
-      <motion.div
-        className="absolute inset-0 -z-10"
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
-      >
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/5"
-            style={{
-              width: 140 + i * 30,
-              height: 140 + i * 30,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              x: [0, 40, -40, 0],
-              y: [0, -30, 30, 0],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 30 + i * 6,
-            }}
-          />
-        ))}
-      </motion.div>
-
-      <div className="max-w-6xl mx-auto text-center px-5 sm:px-6">
-      <h2
-  className="
-    text-4xl
-    sm:text-6xl
-    md:text-7xl
-    font-extralight
-    tracking-tight
-    leading-[1.05]
-    font-['Montserrat']
-  "
->
-  <span className="text-white/85">Production</span>{" "}
-  <span className="text-white/45">Stack</span>{" "}
-</h2>
-
-
-
-
-        {/* Description */}
-        <p className="mt-4 max-w-3xl mx-auto text-white/50 text-lg sm:text-xl leading-relaxed">
-          We leverage the latest technologies to craft scalable, high-performance
-          digital solutions that empower businesses worldwide.
-        </p>
-
-        {/* Divider */}
-        <div className="w-20 h-[2px] bg-gradient-to-r from-white/20 via-white/50 to-white/20 mx-auto mt-6 rounded-full" />
-
-        {/* Tech Carousel */}
+    <section className="relative w-full mt-24 px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl">
+        {/* MOBILE → Horizontal premium scroll */}
         <motion.div
           className="
-            mt-12
-            flex
-            gap-8
-            items-stretch
-            justify-start
-            md:justify-center
-            overflow-x-auto
-            py-6
-            px-2
-            scrollbar-thin
-            scrollbar-thumb-white/20
-            scrollbar-track-black/10
+            flex gap-3 overflow-x-auto pb-3
+            sm:overflow-visible sm:flex-wrap sm:justify-center
+            scrollbar-none
           "
-          whileInView={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: { staggerChildren: 0.08 },
+            },
+          }}
         >
-          {techStack.map(({ name, icon: Icon, color }, i) => (
-            <motion.div
-              key={name}
-              className="
-                min-w-[120px]
-                sm:min-w-[140px]
-                bg-black/80
-                backdrop-blur-md
-                rounded-3xl
-                flex
-                flex-col
-                items-center
-                justify-center
-                text-center
-                gap-3
-                p-6
-                shadow-xl
-                hover:shadow-2xl
-                transition-all
-              "
-              whileHover={{ scale: 1.06, y: -6 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.12, type: "spring", stiffness: 120 }}
-            >
-              <div
-                className="p-4 rounded-full"
-                style={{
-                  background: `linear-gradient(135deg, ${color}33, transparent)`,
-                }}
-              >
-                <Icon className="text-4xl sm:text-5xl text-white" />
-              </div>
+          {items.map((item, i) => {
+            const Icon = item.icon;
 
-              <span className="text-white/60 text-xs sm:text-sm font-semibold uppercase tracking-wide">
-                {name}
-              </span>
-            </motion.div>
-          ))}
+            return (
+              <motion.div
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 },
+                }}
+                whileHover={{
+                  y: -4,
+                  scale: 1.04,
+                }}
+                whileTap={{
+                  scale: 0.96,
+                }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.4, 0.0, 0.2, 1],
+                }}
+                className={`
+                  group relative
+                  flex items-center gap-3
+                  min-w-[220px] sm:min-w-[unset]
+                  rounded-full px-4 py-2.5
+                  backdrop-blur-xl
+                  bg-gradient-to-br ${item.gradient}
+                  border border-white/20
+                  shadow-[0_14px_45px_rgba(0,0,0,0.25)]
+                `}
+              >
+                {/* Subtle glow */}
+                <span
+                  className="
+                    pointer-events-none absolute inset-0 rounded-full
+                    opacity-0 group-hover:opacity-100
+                    transition-opacity duration-500
+                    bg-white/5
+                  "
+                />
+
+                {/* Icon */}
+                <motion.div
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: [0.4, 0.0, 0.2, 1],
+                  }}
+                  className="
+                    flex h-9 w-9 items-center justify-center
+                    rounded-full bg-white/20
+                  "
+                >
+                  <Icon className="h-5 w-5 text-white" />
+                </motion.div>
+
+                {/* Text */}
+                <div className="leading-tight">
+                  <p className="text-sm font-semibold text-white">
+                    {item.title}
+                  </p>
+                  <p className="text-[11px] text-white/70">
+                    {item.subtitle}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
   );
-};
-
-export default TrustStrip;
+}

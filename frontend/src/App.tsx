@@ -6,9 +6,6 @@ import Services from "./Pages/services";
 import SelectedWork from "./Pages/SelectedWork";
 import CaseStudy from "./Pages/CaseStudy";
 
-import Section from "./Components/Section";
-import Showcase from "./Components/ShowCase";
-import MagneticCursor from "./Components/MagneticCursor";
 import Navbar from "./Components/Navbar";
 import ScrollToTop from "./Components/ScrollToTop";
 import ViewWork from "./Pages/ViewWork";
@@ -20,9 +17,6 @@ function Home() {
       <TrustStrip />
       <Services />
       <SelectedWork />
-      <Section>
-        <Showcase />
-      </Section>
     </>
   );
 }
@@ -31,7 +25,6 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <MagneticCursor />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

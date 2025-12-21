@@ -45,7 +45,7 @@ const Hero = () => {
   return (
     <section
       ref={vantaRef}
-      className="relative min-h-screen bg-black text-white overflow-hidden"
+      className="relative min-h-[100svh] bg-black text-white overflow-hidden -mt-24"
     >
       {/* Depth overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/95 z-0" />
@@ -63,14 +63,14 @@ const Hero = () => {
           <span className="text-white/70">Hub</span>
         </h1>
 
-        <div className="my-10 w-28 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[fadeSlide_1s_ease-out_forwards]" />
+        <div className="my-4 w-28 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[fadeSlide_1s_ease-out_forwards]" />
 
         <p className="max-w-xl text-sm sm:text-base md:text-lg text-white/70 leading-relaxed">
           We craft refined digital products for founders and modern businesses —
           where performance, clarity, and trust define the experience.
         </p>
 
-        <div className="mt-14 flex flex-col sm:flex-row gap-4">
+        <div className="mt-10 flex flex-col sm:flex-row gap-4">
           <button
             onClick={() => navigate("/work")}
             className="px-10 py-4 rounded-full bg-white text-black text-sm sm:text-base font-medium transition hover:bg-white/90 active:scale-[0.98]"
