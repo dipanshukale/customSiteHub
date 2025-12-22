@@ -46,7 +46,7 @@ const ContactPage: React.FC = () => {
   }, []);
 
   return (
-    <main className="bg-black min-h-screen text-white relative overflow-x-hidden ">
+    <main className="bg-black min-h-screen text-white relative overflow-x-hidden -mt-24">
 
       {/* ================= HERO ================= */}
       <section className="relative w-full min-h-screen md:h-[100svh] flex flex-col justify-between">

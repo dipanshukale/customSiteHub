@@ -92,10 +92,6 @@ body {
   background-color: white; /* bright white */
 }
 
-
-
-
-
 @keyframes logo {
   from {
     opacity: 0;
@@ -126,7 +122,6 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 
 /* Apple-like scroll easing */
 * {
