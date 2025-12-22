@@ -46,15 +46,15 @@ const ContactPage: React.FC = () => {
   }, []);
 
   return (
-    <main className="bg-black text-white relative overflow-x-hidden">
+    <main className="bg-black min-h-screen text-white relative overflow-x-hidden ">
 
       {/* ================= HERO ================= */}
-      <section className="relative w-full h-screen md:h-[90vh] flex flex-col justify-between">
+      <section className="relative w-full min-h-screen md:h-[100svh] flex flex-col justify-between">
         {/* Hero Image */}
         <img
           src="/bg.jpg"
           alt="Hero"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0  w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40" />
 
@@ -79,14 +79,14 @@ const ContactPage: React.FC = () => {
         </motion.div>
 
         {/* Scroll Indicator */}
-        <div className="relative z-10 flex justify-center mb-6 md:mb-12">
+        <div className="relative z-10 flex justify-center mb-36 md:mb-32">
   <motion.div
     className="w-[2px] h-12 bg-white rounded-full"
     animate={{ y: [0, 12, 0] }}
     transition={{ repeat: Infinity, duration: 1.5 }}
   />
   <div className="absolute text-white/40 text-[10px] tracking-[0.35em] md:bottom-16 md:translate-y-0" style={{
-         bottom: "100%",      // mobile: move up
+         bottom: "120%",      // mobile: move up
          transform: "translateY(50%)"
        }}>
        

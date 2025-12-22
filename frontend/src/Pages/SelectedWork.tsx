@@ -61,7 +61,7 @@ export default function SelectedWork() {
        
 
         {/* Projects */}
-        <div className="flex flex-col gap-24 sm:gap-28 md:gap-[30vh] snap-y snap-mandatory">
+        <div className="flex flex-col gap-24 sm:gap-28 md:gap-[10vh] snap-y snap-mandatory">
           {projects.map((project, i) => {
             const isReversed = i % 2 !== 0;
 
