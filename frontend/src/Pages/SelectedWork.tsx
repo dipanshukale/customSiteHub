@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform, useViewportScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const projects = [
@@ -30,102 +30,106 @@ const projects = [
 
 export default function SelectedWork() {
   const navigate = useNavigate();
-  const { scrollY } = useViewportScroll();
 
   return (
-    <section className="relative bg-black text-white px-5 sm:px-10  lg:-mt-32  sm:pt-36 pb-32 overflow-x-hidden">
-     
-      <div className="relative z-10 max-w-6xl mx-auto">
-
-        {/* Header */}
-        <div className="mb-20 sm:mb-28 max-w-3xl text-center md:text-left">
-          <span className="text-[11px] tracking-[0.45em] uppercase text-white/40">
+    <section className="bg-black px-5 sm:px-10">
+      {/* APPLE MATERIAL CONTAINER */}
+      <div
+        className="
+          max-w-7xl mx-auto
+          rounded-[28px]
+          bg-[#111214]
+          px-6 sm:px-12 lg:px-16
+          py-16 sm:py-20
+          shadow-[0_50px_100px_rgba(0,0,0,0.55)]
+        "
+      >
+        {/* HEADER */}
+        <div className="max-w-3xl mb-16 sm:mb-20">
+          <span className="text-[11px] tracking-[0.4em] uppercase text-white/45">
             Selected Work
           </span>
 
-          <h1 className="mt-6 text-4xl sm:text-5xl md:text-7xl font-extralight tracking-tight leading-tight">
-            Products built by
-            <br />
-            <span className="text-white/90">Custom</span>
-            <span className="text-white/40">Site</span>
-            <span className="text-white/70">Hub</span>
-          </h1>
+          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light leading-tight text-white">
+            Designed to feel
+            <br /> quietly inevitable
+          </h2>
 
-          <p className="mt-6 max-w-xl text-sm sm:text-base text-white/60 leading-relaxed">
-            Fewer projects. Sharper execution.
-            Each product below is designed to age well — technically and visually.
+          <p className="mt-4 text-base text-white/60 leading-relaxed max-w-xl">
+            A focused collection of products shaped with clarity,
+            precision, and long-term thinking.
           </p>
         </div>
 
-        {/* Scroll Indicators */}
-       
-
-        {/* Projects */}
-        <div className="flex flex-col gap-24 sm:gap-28 md:gap-[10vh] snap-y snap-mandatory">
+        {/* PROJECTS */}
+        <div className="space-y-20 sm:space-y-16">
           {projects.map((project, i) => {
-            const isReversed = i % 2 !== 0;
+            const reverse = i % 2 !== 0;
 
             return (
-              <section
+              <motion.article
                 key={project.slug}
-                className="snap-start grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center relative"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center"
               >
-                {/* Parallax Image */}
-                <motion.div
-                  className={`relative h-[260px] sm:h-[360px] md:h-[520px] rounded-3xl overflow-hidden border border-white/10 bg-black md:sticky md:top-32 ${
-                    isReversed ? "md:order-2" : ""
-                  }`}
-                  style={{
-                    y: useTransform(scrollY, [i * 600, (i + 1) * 600], [0, -40]),
-                  }}
+                {/* IMAGE */}
+                <div
+                  className={`relative h-[260px] sm:h-[400px] md:h-[480px]
+                  rounded-2xl overflow-hidden
+                  ${reverse ? "md:order-2" : ""}
+                `}
                 >
                   <img
                     src={project.image}
                     alt={project.name}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  {/* Subtle Glass & Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-white/10" />
-                  <div className="absolute inset-0 ring-1 ring-white/10 rounded-3xl" />
-                </motion.div>
 
-                {/* Content */}
-                <motion.div
-                  className={`max-w-xl ${isReversed ? "md:order-1" : ""}`}
-                  initial={{ opacity: 0, y: 36 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.15 }}
-                >
-                  <span className="text-[11px] tracking-widest uppercase text-white/40">
-                    {project.subtitle}
-                  </span>
+                  {/* Mobile overlay */}
+                  <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/85 to-transparent md:hidden">
+                    <p className="text-[10px] uppercase tracking-widest text-white/55">
+                      {project.subtitle}
+                    </p>
+                    <h3 className="mt-1 text-2xl font-light text-white">
+                      {project.name}
+                    </h3>
+                  </div>
+                </div>
 
-                  <h3 className="mt-4 text-3xl sm:text-4xl font-light tracking-tight">
-                    {project.name}
-                  </h3>
+                {/* CONTENT */}
+                <div className={`${reverse ? "md:order-1" : ""} max-w-xl`}>
+                  <div className="hidden md:block">
+                    <p className="text-[11px] uppercase tracking-widest text-white/50">
+                      {project.subtitle}
+                    </p>
+                    <h3 className="mt-3 text-4xl font-light text-white">
+                      {project.name}
+                    </h3>
+                  </div>
 
-                  <div className="mt-4 h-px w-12 bg-white/20" />
-
-                  <p className="mt-6 text-sm sm:text-base text-white/60 leading-relaxed">
+                  <p className="mt-4 text-base text-white/60 leading-relaxed">
                     {project.desc}
                   </p>
 
-                  <p className="mt-5 text-[11px] tracking-widest uppercase text-white/40">
+                  <p className="mt-3 text-[11px] uppercase tracking-widest text-white/45">
                     {project.tech}
                   </p>
 
                   <button
                     onClick={() => navigate(`/case-study/${project.slug}`)}
-                    className="mt-6 sm:mt-10 inline-flex items-center gap-3 text-[11px] tracking-[0.35em] uppercase text-white/70 hover:text-white transition relative"
+                    className="
+                      mt-6 inline-flex items-center
+                      text-[11px] tracking-[0.35em] uppercase
+                      text-white/70 hover:text-white transition
+                    "
                   >
-                    View Case Study
-                    <span className="absolute bottom-0 left-0 h-px w-8 bg-white/30 transition-all duration-500 group-hover:w-16" />
+                    View case study →
                   </button>
-                </motion.div>
-
-                {/* Mobile fade depth */}
-                <div className="absolute md:hidden -bottom-12 left-0 right-0 h-24 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none" />
-              </section>
+                </div>
+              </motion.article>
             );
           })}
         </div>
