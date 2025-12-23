@@ -12,6 +12,7 @@ import ViewWork from "./Pages/ViewWork";
 import ContactPage from "./Pages/contact";
 import TestimonialsSlider from "./Pages/Testimonial";
 import StartProject from "./Pages/StartProject";
+import AfterTestimonials from "./Pages/AfterTestimonials";
 
 function Home() {
   return (
@@ -21,6 +22,7 @@ function Home() {
       <Services />
       <SelectedWork />
       <TestimonialsSlider/>
+      <AfterTestimonials/>
     </>
   );
 }
