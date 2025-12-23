@@ -89,7 +89,7 @@ const AboutStudio = () => {
 
           {lampOn && (
             <motion.div
-              className="absolute top-12 w-[420px] h-[300px] bg-yellow-200/20 blur-3xl"
+              className="absolute top-12 w-[420px] h-[300px] bg-yellow-300/30 blur-3xl"
               animate={{ opacity: [0.4, 0.7, 0.5] }}
               transition={{ repeat: Infinity, duration: 2 }}
             />
