@@ -79,7 +79,7 @@ const Hero = () => {
           </button>
 
           <button
-            onClick={() => navigate("/#contact")}
+            onClick={() => navigate("/startproject")}
             className="px-10 py-4 rounded-full border border-white/25 text-sm sm:text-base text-white/80 transition hover:bg-white/10 active:scale-[0.98]"
           >
             Start a Project

@@ -11,6 +11,7 @@ import ScrollToTop from "./Components/ScrollToTop";
 import ViewWork from "./Pages/ViewWork";
 import ContactPage from "./Pages/contact";
 import TestimonialsSlider from "./Pages/Testimonial";
+import StartProject from "./Pages/StartProject";
 
 function Home() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/work" element={<ViewWork/>} />
         <Route path="/contact" element={<ContactPage/>} />
+        <Route path="/startproject" element={<StartProject/>} />
         <Route path="/case-study/:id" element={<CaseStudy />} />
       </Routes>
     </>

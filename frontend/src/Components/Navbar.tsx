@@ -80,7 +80,7 @@ const Navbar = () => {
             {/* DESKTOP CTA */}
             <div className="hidden md:block">
               <button
-                onClick={() => navigate("/contact")}
+                onClick={() => navigate("/startproject")}
                 className="rounded-full border border-white/20 px-6 py-2 text-[11px] tracking-widest text-white/80 hover:bg-white/5 hover:border-white/40 transition-all duration-300 shadow-lg hover:shadow-2xl"
               >
                 START PROJECT
@@ -132,7 +132,7 @@ const Navbar = () => {
 
           <button
             onClick={() => {
-              navigate("/contact");
+              navigate("/startproject");
               setMenuOpen(false);
             }}
             className="mt-16 rounded-full border border-white/15 px-12 py-3 text-[11px] tracking-widest text-white/85 hover:bg-white/5 transition-all duration-300"
