@@ -70,25 +70,11 @@ const Services = () => {
         </span>
 
         <div className="flex justify-center items-center mt-4 gap-3">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-extralight tracking-tight leading-tight">
-            <span className="text-white/70">Digital</span>{" "}
-            <span className="text-white/40">Craft</span>{" "}
-            <span className="text-white/90">Studio</span>
-          </h2>
-          {/* Animated tech icon */}
-          <motion.div className="flex space-x-1 mt-1">
-            {[...Array(5)].map((_, i) => (
-              <motion.span
-                key={i}
-                className="block w-1 h-4 bg-white rounded-full"
-                animate={{ scaleY: [1, 2, 1] }}
-                transition={{ repeat: Infinity, duration: 1 + i * 0.2, ease: "easeInOut" }}
-              />
-            ))}
-          </motion.div>
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extralight leading-tight text-center tracking-tight text-white/90">
+  Digital <span className="text-white/70">Vision</span> Studio
+</h1>
 
-
-
+         
         </div>
 
         <p className="mt-4 text-white/60 text-lg sm:text-xl font-light leading-relaxed ">
