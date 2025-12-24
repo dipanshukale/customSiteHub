@@ -26,7 +26,7 @@ const team = [
   },
 ];
 
-export default function About() {
+export default function AboutUs() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const lampOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
