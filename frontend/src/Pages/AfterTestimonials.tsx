@@ -110,7 +110,7 @@ export default function AfterTestimonialsPremium() {
 
   return (
     <section className="relative px-5 sm:px-10 py-8 bg-black">
-      <div className="max-w-7xl mx-auto rounded-[36px] bg-[#121316] border border-white/10 shadow-[0_80px_160px_rgba(0,0,0,0.7)] p-8 sm:p-12">
+      <div className="max-w-7xl mx-auto rounded-[36px] bg-[#111214] p-8 sm:p-12">
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
