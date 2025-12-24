@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { useRef, useEffect,useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import {
@@ -126,7 +126,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-black px-5 sm:px-10 py-28 text-white">
+    <section ref={ref} className="relative bg-black px-5 sm:px-10 py-12 text-white">
       <div className="relative max-w-7xl mx-auto rounded-[48px] bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/10 backdrop-blur-2xl shadow-[0_120px_240px_rgba(0,0,0,0.75)] p-8 sm:p-16 overflow-hidden">
 
         {/* GOLDEN LAMP */}
@@ -166,8 +166,16 @@ export default function AboutUs() {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-4 h-4 rounded-full bg-white shadow-[0_0_30px_rgba(255,255,255,0.6)]" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <span className="text-[4rem] sm:text-[6rem] font-extrabold text-white/20 tracking-widest relative z-10">
+                    {i + 1 < 10 ? `0${i + 1}` : i + 1}
+                  </span>
+                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[4rem] sm:text-[6rem] font-extrabold text-white/10 blur-[15px] animate-[pulse_2s_infinite]">
+                    {i + 1 < 10 ? `0${i + 1}` : i + 1}
+                  </span>
+                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[4rem] sm:text-[6rem] font-extrabold text-yellow-400/20 blur-[40px] animate-[pulse_2.5s_infinite]">
+                    {i + 1 < 10 ? `0${i + 1}` : i + 1}
+                  </span>
                 </div>
               </motion.div>
             ))}
@@ -215,15 +223,15 @@ export default function AboutUs() {
 
           <div className="md:hidden mt-16">
             <Swiper
-            modules={[Pagination]}
-            slidesPerView={1}
-            spaceBetween={20}
-            pagination={{
-              clickable: true,
-              renderBullet: (index, className) => {
-                return `<span class="${className} custom-bullet"></span>`;
-              },
-            }}
+              modules={[Pagination]}
+              slidesPerView={1}
+              spaceBetween={20}
+              pagination={{
+                clickable: true,
+                renderBullet: (index, className) => {
+                  return `<span class="${className} custom-bullet"></span>`;
+                },
+              }}
             >
               {team.map((member) => (
                 <SwiperSlide key={member.name}>
@@ -243,29 +251,29 @@ export default function AboutUs() {
 
         {/* STATS (UNCHANGED) */}
         <div className="stats-section relative z-10 mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-  <InView triggerOnce onChange={(inView) => inView && setStatsVisible(true)}>
-    {({ ref }) => (
-      <div ref={ref} className="w-full col-span-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-        {[
-          { value: 5, label: "Products Delivered", suffix: "+" },
-          { value: 95, label: "Performance Score", suffix: "+" },
-          { value: 1, label: "Years Experience", suffix: "+" },
-          { value: 90, label: "Client Retention", suffix: "%" },
-        ].map((s) => (
-          <div
-            key={s.label}
-            className="stat-card rounded-3xl bg-white/[0.04] border border-white/10 p-6 md:p-8 text-center shadow-lg"
-          >
-            <p className="text-4xl md:text-5xl font-light text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400">
-              {statsVisible && <CountUp end={s.value} duration={8} suffix={s.suffix} />}
-            </p>
-            <p className="mt-3 text-xs tracking-widest uppercase text-white/40">{s.label}</p>
-          </div>
-        ))}
-      </div>
-    )}
-  </InView>
-</div>
+          <InView triggerOnce onChange={(inView) => inView && setStatsVisible(true)}>
+            {({ ref }) => (
+              <div ref={ref} className="w-full col-span-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                {[
+                  { value: 5, label: "Products Delivered", suffix: "+" },
+                  { value: 95, label: "Performance Score", suffix: "+" },
+                  { value: 1, label: "Years Experience", suffix: "+" },
+                  { value: 90, label: "Client Retention", suffix: "%" },
+                ].map((s) => (
+                  <div
+                    key={s.label}
+                    className="stat-card rounded-3xl bg-white/[0.04] border border-white/10 p-6 md:p-8 text-center shadow-lg"
+                  >
+                    <p className="text-4xl md:text-5xl font-light text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400">
+                      {statsVisible && <CountUp end={s.value} duration={8} suffix={s.suffix} />}
+                    </p>
+                    <p className="mt-3 text-xs tracking-widest uppercase text-white/40">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </InView>
+        </div>
       </div>
     </section>
   );

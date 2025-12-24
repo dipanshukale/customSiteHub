@@ -20,6 +20,7 @@ function Home() {
     <>
       <Hero />
       <TrustStrip />
+      <AboutUs/>
       <Services />
       <SelectedWork />
       <TestimonialsSlider/>

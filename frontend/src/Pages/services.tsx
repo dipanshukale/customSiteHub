@@ -40,7 +40,7 @@ const Services = () => {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section className="relative bg-black text-white py-16 px-4 md:px-12 overflow-hidden">
+    <section className="relative bg-black text-white py-12 px-4 md:px-12 overflow-hidden">
       {/* ================= HEADER ================= */}
       <div className="relative max-w-3xl mx-auto text-center">
         {/* Animated floating dots */}
@@ -70,7 +70,7 @@ const Services = () => {
         </span>
 
         <div className="flex justify-center items-center mt-4 gap-3">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-extralight tracking-tight leading-tight font-['Montserrat']">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-extralight tracking-tight leading-tight">
             <span className="text-white/70">Digital</span>{" "}
             <span className="text-white/40">Craft</span>{" "}
             <span className="text-white/90">Studio</span>
@@ -91,7 +91,7 @@ const Services = () => {
 
         </div>
 
-        <p className="mt-4 text-white/60 text-lg sm:text-xl font-light leading-relaxed font-['Montserrat']">
+        <p className="mt-4 text-white/60 text-lg sm:text-xl font-light leading-relaxed ">
           We build web apps, products, marketing campaigns, and motion design  crafted to elevate your brand.
         </p>
 
@@ -157,7 +157,7 @@ const Services = () => {
       </div>
 
       {/* ================= DESKTOP HORIZONTAL PREMIUM CARDS ================= */}
-      <div className="hidden md:flex mt-20 gap-8 overflow-x-auto py-6 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-black/10">
+      <div className="hidden md:flex mt-12 gap-8 overflow-x-auto py-6 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-black/10">
         {services.map((s, i) => {
           const isOpen = expanded === i;
           return (
