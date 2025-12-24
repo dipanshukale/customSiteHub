@@ -13,6 +13,7 @@ import ContactPage from "./Pages/contact";
 import TestimonialsSlider from "./Pages/Testimonial";
 import StartProject from "./Pages/StartProject";
 import AfterTestimonials from "./Pages/AfterTestimonials";
+import About from "./Pages/about";
 
 function Home() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work" element={<ViewWork/>} />
+        <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/startproject" element={<StartProject/>} />
         <Route path="/case-study/:id" element={<CaseStudy />} />
