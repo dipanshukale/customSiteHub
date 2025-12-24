@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect,useState } from "react";
+import { InView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import {
   HiOutlineSparkles,
@@ -66,6 +67,8 @@ export default function AboutUs() {
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const lampOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
+  const [statsVisible, setStatsVisible] = useState(false);
+
 
   /* ---------------- GSAP ADD-ON ONLY ---------------- */
   useEffect(() => {
@@ -211,7 +214,17 @@ export default function AboutUs() {
           </div>
 
           <div className="md:hidden mt-16">
-            <Swiper modules={[Pagination]} slidesPerView={1} spaceBetween={20} pagination={{ clickable: true }}>
+            <Swiper
+            modules={[Pagination]}
+            slidesPerView={1}
+            spaceBetween={20}
+            pagination={{
+              clickable: true,
+              renderBullet: (index, className) => {
+                return `<span class="${className} custom-bullet"></span>`;
+              },
+            }}
+            >
               {team.map((member) => (
                 <SwiperSlide key={member.name}>
                   <div className="team-card relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-lg">
@@ -230,20 +243,29 @@ export default function AboutUs() {
 
         {/* STATS (UNCHANGED) */}
         <div className="stats-section relative z-10 mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {[
-            { value: 5, label: "Products Delivered", suffix: "+" },
-            { value: 95, label: "Performance Score", suffix: "+" },
-            { value: 1, label: "Years Experience", suffix: "+" },
-            { value: 90, label: "Client Retention", suffix: "%" },
-          ].map((s) => (
-            <div key={s.label} className="stat-card rounded-3xl bg-white/[0.04] border border-white/10 p-6 md:p-8 text-center shadow-lg">
-              <p className="text-4xl md:text-5xl font-light text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400">
-                <CountUp end={s.value} duration={8} suffix={s.suffix} />
-              </p>
-              <p className="mt-3 text-xs tracking-widest uppercase text-white/40">{s.label}</p>
-            </div>
-          ))}
-        </div>
+  <InView triggerOnce onChange={(inView) => inView && setStatsVisible(true)}>
+    {({ ref }) => (
+      <div ref={ref} className="w-full col-span-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        {[
+          { value: 5, label: "Products Delivered", suffix: "+" },
+          { value: 95, label: "Performance Score", suffix: "+" },
+          { value: 1, label: "Years Experience", suffix: "+" },
+          { value: 90, label: "Client Retention", suffix: "%" },
+        ].map((s) => (
+          <div
+            key={s.label}
+            className="stat-card rounded-3xl bg-white/[0.04] border border-white/10 p-6 md:p-8 text-center shadow-lg"
+          >
+            <p className="text-4xl md:text-5xl font-light text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400">
+              {statsVisible && <CountUp end={s.value} duration={8} suffix={s.suffix} />}
+            </p>
+            <p className="mt-3 text-xs tracking-widest uppercase text-white/40">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </InView>
+</div>
       </div>
     </section>
   );
