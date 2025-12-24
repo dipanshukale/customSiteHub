@@ -13,7 +13,6 @@ import ContactPage from "./Pages/contact";
 import TestimonialsSlider from "./Pages/Testimonial";
 import StartProject from "./Pages/StartProject";
 import AfterTestimonials from "./Pages/AfterTestimonials";
-import Aboutus from "./Pages/AboutUs";
 import AboutUs from "./Pages/AboutUs";
 
 function Home() {
