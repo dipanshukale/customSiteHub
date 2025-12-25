@@ -138,13 +138,20 @@ export default function AboutUs() {
         {/* HEADER */}
         <div className="about-header relative z-10 text-center max-w-3xl mx-auto">
           <span className="text-xs tracking-[0.4em] uppercase text-white/40">About Us</span>
-          <h1 className="mt-6 text-[clamp(2.4rem,6vw,4.5rem)] font-light leading-[1.05] tracking-tight">
-            <span className="block text-white/90">Crafting digital products</span>
-            <span className="relative inline-block mt-3">
-              <span className="relative z-10 text-white/40">with intention</span>
-              <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent blur-sm" />
-            </span>
-          </h1>
+          <h1 className="mt-6 text-center md:text-left text-[clamp(2.3rem,6vw,4.4rem)] font-light leading-[1.05] tracking-tight">
+  <span className="block text-white/90">
+    Thoughtful design
+  </span>
+
+  <span className="relative inline-block mt-3">
+    <span className="relative z-10 text-white/45">
+      engineered for scale
+    </span>
+    <span className="absolute -bottom-1 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+  </span>
+</h1>
+
+
           <p className="mt-6 text-white/60 leading-relaxed">
             We design and build modern software where product thinking,
             engineering clarity, and design restraint work together.
