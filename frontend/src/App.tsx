@@ -16,6 +16,8 @@ import AfterTestimonials from "./Pages/AfterTestimonials";
 import AboutUs from "./Pages/AboutUs";
 import ServicesPage from "./Pages/ServicesPage";
 import Footer from "./Components/Footer";
+import Terms from "./Components/Terms";
+import PrivacyPolicy from "./Components/PrivacyPage";
 
 function Home() {
   return (
@@ -55,6 +57,8 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/startproject" element={<StartProject />} />
+        <Route path="/privacy" element={<PrivacyPolicy/>} />
+        <Route path="/terms" element={<Terms/>} />
         <Route path="/case-study/:id" element={<CaseStudy />} />
       </Routes>
 
