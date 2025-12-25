@@ -11,6 +11,7 @@ import {
   FiTwitter,
   FiChevronDown,
 } from "react-icons/fi";
+import Footer from "../Components/Footer";
 
 const services = [
   "Website Project",

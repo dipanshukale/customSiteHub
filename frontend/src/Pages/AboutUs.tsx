@@ -15,6 +15,7 @@ import {
 /* GSAP */
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Footer from "../Components/Footer";
 gsap.registerPlugin(ScrollTrigger);
 
 /* ---------------- DATA ---------------- */

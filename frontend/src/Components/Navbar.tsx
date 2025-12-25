@@ -4,7 +4,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 
 const links = [
   { label: "Work", path: "/work" },
-  { label: "Services", path: "/services" },
+  { label: "services", path: "/service" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];

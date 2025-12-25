@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { projects } from "../data/Projects";
 import { motion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
+import Footer from "../Components/Footer";
 
 const CaseStudy = () => {
   const { id } = useParams();

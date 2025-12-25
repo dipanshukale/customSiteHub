@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { viewWork } from "../data/ViewWorkContent";
 import { FiExternalLink, FiX } from "react-icons/fi";
+import Footer from "../Components/Footer";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -200,6 +201,7 @@ export default function ViewWork() {
           </motion.div>
         )}
       </AnimatePresence>
+      <Footer/>
     </section>
   );
 }
