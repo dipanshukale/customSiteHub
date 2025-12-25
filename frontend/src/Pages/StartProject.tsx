@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 const steps = ["Type", "Scope", "Timeline", "Budget", "Details"];
 
@@ -43,24 +45,60 @@ type FormState = {
 export default function StartProject() {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormState>({});
+  const [isSending, setIsSending] = useState(false);
 
   const next = () => setStep((s) => Math.min(s + 1, steps.length - 1));
   const back = () => setStep((s) => Math.max(s - 1, 0));
 
+  const handleSubmit = async () => {
+    if (!form.name || !form.email || !form.problem) {
+      Swal.fire("Missing info", "Please fill required fields.", "warning");
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      await emailjs.send(
+        "service_sva8fe9", // 🔁 your service
+        "template_nlxtjzi", // 🔁 your template
+        {
+          from_name: form.name,
+          reply_to: form.email,
+          project_type: form.projectType,
+          scope: form.scope,
+          timeline: form.timeline,
+          budget: form.budget,
+          company: form.company || "—",
+          message: form.problem,
+        },
+        "qVbUzLu8GBf3xexPI" // 🔁 your public key
+      );
+
+      Swal.fire(
+        "Request sent",
+        "Thanks for sharing the details. I’ll get back to you shortly.",
+        "success"
+      );
+
+      setForm({});
+      setStep(0);
+    } catch (err) {
+      console.error(err);
+      Swal.fire("Error", "Something went wrong. Try again later.", "error");
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <section className="relative min-h-screen text-white overflow-hidden">
-      {/* Subtle depth background */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(50%_35%_at_50%_0%,rgba(255,255,255,0.05),transparent_70%)]" />
-      </div> */}
-
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative z-10 max-w-[980px] mx-auto px-5 sm:px-8 py-20"
       >
-        {/* Glass container */}
         <div className="rounded-[32px] border border-white/10 overflow-hidden">
           {/* Header */}
           <div className="px-6 sm:px-10 py-10 border-b border-white/10">
@@ -79,7 +117,6 @@ export default function StartProject() {
               begin. No pressure. No sales noise.
             </p>
 
-            {/* Progress */}
             <div className="mt-6 flex gap-2">
               {steps.map((_, i) => (
                 <div
@@ -148,7 +185,14 @@ export default function StartProject() {
                   />
                 )}
 
-                {step === 4 && <FinalStep form={form} setForm={setForm} />}
+                {step === 4 && (
+                  <FinalStep
+                    form={form}
+                    setForm={setForm}
+                    isSending={isSending}
+                    onSubmit={handleSubmit}
+                  />
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -157,7 +201,7 @@ export default function StartProject() {
           <div className="flex justify-between items-center px-6 sm:px-10 py-6 border-t border-white/10">
             <button
               onClick={back}
-              disabled={step === 0}
+              disabled={step === 0 || isSending}
               className="text-white/40 hover:text-white transition disabled:opacity-20"
             >
               ← Back
@@ -195,15 +239,7 @@ function OptionGrid({
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => onSelect(o)}
-            className="
-              rounded-2xl px-5 py-5 text-left
-              bg-[linear-gradient(180deg,#141414,#0c0c0c)]
-              border border-white/10
-              text-white/70
-              hover:text-white
-              hover:border-white/30
-              transition-all
-            "
+            className="rounded-2xl px-5 py-5 text-left bg-[linear-gradient(180deg,#141414,#0c0c0c)] border border-white/10 text-white/70 hover:text-white hover:border-white/30 transition-all"
           >
             {o}
           </motion.button>
@@ -216,9 +252,13 @@ function OptionGrid({
 function FinalStep({
   form,
   setForm,
+  onSubmit,
+  isSending,
 }: {
   form: FormState;
   setForm: React.Dispatch<React.SetStateAction<FormState>>;
+  onSubmit: () => void;
+  isSending: boolean;
 }) {
   return (
     <div className="max-w-lg space-y-5">
@@ -245,8 +285,19 @@ function FinalStep({
         onChange={(e) => setForm({ ...form, problem: e.target.value })}
       />
 
-      <button className="mt-4 inline-flex text-[11px] tracking-[0.35em] uppercase text-white/80 hover:text-white transition">
-        Submit →
+      <button
+        onClick={onSubmit}
+        disabled={isSending}
+        className="mt-4 inline-flex items-center gap-3 text-[11px] tracking-[0.35em] uppercase text-white/80 hover:text-white transition disabled:opacity-40"
+      >
+        {isSending ? (
+          <>
+            <span className="w-4 h-4 border border-white/30 border-t-white rounded-full animate-spin" />
+            Sending
+          </>
+        ) : (
+          "Submit →"
+        )}
       </button>
 
       <p className="text-white/40 text-sm">
