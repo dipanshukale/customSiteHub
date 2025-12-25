@@ -30,7 +30,7 @@ export default function EyeBot() {
     const i = setInterval(() => {
       setBlink(true);
       setTimeout(() => setBlink(false), 160);
-    }, 4200);
+    }, 3200);
     return () => clearInterval(i);
   }, []);
 
