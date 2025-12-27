@@ -49,38 +49,47 @@ export default function StartProject() {
 
   const next = () => setStep((s) => Math.min(s + 1, steps.length - 1));
   const back = () => setStep((s) => Math.max(s - 1, 0));
-
   const handleSubmit = async () => {
     if (!form.name || !form.email || !form.problem) {
       Swal.fire("Missing info", "Please fill required fields.", "warning");
       return;
     }
-
+  
     setIsSending(true);
-
+  
+    const fullMessage = `
+  Project Type: ${form.projectType || "—"}
+  Scope: ${form.scope || "—"}
+  Timeline: ${form.timeline || "—"}
+  Budget: ${form.budget || "—"}
+  
+  Client Name: ${form.name}
+  Email: ${form.email}
+  Company: ${form.company || "—"}
+  
+  Problem / Description:
+  ${form.problem}
+    `;
+  
     try {
       await emailjs.send(
-        "service_sva8fe9", // 🔁 your service
-        "template_nlxtjzi", // 🔁 your template
+        "service_sva8fe9",
+        "template_nlxtjzi",
         {
           from_name: form.name,
           reply_to: form.email,
-          project_type: form.projectType,
-          scope: form.scope,
-          timeline: form.timeline,
-          budget: form.budget,
-          company: form.company || "—",
-          message: form.problem,
+          subject: `New Project Inquiry — ${form.projectType || "General"}`,
+          message: fullMessage, // ✅ SEND EVERYTHING HERE
         },
-        "qVbUzLu8GBf3xexPI" // 🔁 your public key
+        "qVbUzLu8GBf3xexPI"
       );
-
+  
       Swal.fire(
         "Request sent",
         "Thanks for sharing the details. I’ll get back to you shortly.",
         "success"
       );
-
+  
       setForm({});
       setStep(0);
     } catch (err) {
@@ -90,6 +99,7 @@ export default function StartProject() {
       setIsSending(false);
     }
   };
+  
 
   return (
     <section className="relative min-h-screen text-white overflow-hidden">
