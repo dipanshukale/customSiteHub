@@ -29,7 +29,7 @@ const team = [
   },
   {
     name: "Vaibhavi Tingane",
-    role: "Frontend Developer",
+    role: "CFO · Frontend Developer",
     image: "/img1.jpg",
     accent: "from-cyan-400/40 to-transparent",
   },

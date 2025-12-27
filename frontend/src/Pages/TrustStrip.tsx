@@ -37,7 +37,6 @@ export default function TrustStrip() {
   return (
     <section className="relative w-full mt-24 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        {/* MOBILE → Horizontal premium scroll */}
         <motion.div
           className="
             flex gap-3 overflow-x-auto pb-3
