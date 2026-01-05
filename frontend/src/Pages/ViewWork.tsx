@@ -201,7 +201,6 @@ export default function ViewWork() {
           </motion.div>
         )}
       </AnimatePresence>
-      <Footer/>
     </section>
   );
 }

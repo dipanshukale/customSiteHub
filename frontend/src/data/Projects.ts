@@ -43,7 +43,7 @@ export const projects = [
   
       image: "/craft.jpg",
   
-      live: "https://craftcrazycom.vercel.app/",
+      live: "https://crafticrazy.com/",
     },
   
     {
