@@ -4,7 +4,7 @@ export const viewWork = [
       title: "CraftiCrazy",
       category: "Creative Commerce Platform",
       image: "./craft.jpg",
-      live: "https://craftcrazycom.vercel.app/",
+      live: "https://crafticrazy.com/",
   
       story: `
   CraftiCrazy was never treated as “just a website”.
