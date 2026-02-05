@@ -202,7 +202,7 @@ export default function AboutUs() {
             <h2 className="mt-4 text-4xl sm:text-5xl font-light">The minds behind the work</h2>
           </div>
 
-          <div className="hidden md:grid grid-cols-3 gap-10 mt-20">
+          <div className="hidden md:grid grid-cols-2 gap-10 mt-20">
             {team.map((member) => (
               <div key={member.name} className="team-card relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-lg">
                 <img src={member.image} alt={member.name} className="h-[360px] w-full object-cover" />
