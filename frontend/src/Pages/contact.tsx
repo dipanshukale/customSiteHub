@@ -96,7 +96,6 @@ const ContactPage: React.FC = () => {
 
   return (
     <main className="bg-black min-h-screen text-white relative overflow-x-hidden -mt-24">
-      {/* ================= HERO ================= */}
       <section className="relative w-full min-h-screen md:h-[100svh] flex flex-col justify-between">
         <img
           src="/bg.jpg"
@@ -139,9 +138,7 @@ const ContactPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ================= FORM + INFO ================= */}
       <section className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-20">
-        {/* Info Panel */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -163,7 +160,7 @@ const ContactPage: React.FC = () => {
               <FiPhone /> +91 7499678027
             </p>
             <p className="flex items-center gap-3">
-              <FiMapPin /> Chandrapur, India
+              <FiMapPin /> Chandrapur,India
             </p>
           </div>
 
@@ -175,7 +172,7 @@ const ContactPage: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Form Panel */}
+        {/* Form Panel */} 
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, x: 40 }}

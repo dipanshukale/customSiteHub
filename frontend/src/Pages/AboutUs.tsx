@@ -28,12 +28,6 @@ const team = [
     accent: "from-yellow-400/40 to-transparent",
   },
   {
-    name: "Vaibhavi Tingane",
-    role: "CFO · Frontend Developer",
-    image: "/img1.jpg",
-    accent: "from-cyan-400/40 to-transparent",
-  },
-  {
     name: "Latish Kurekar",
     role: "Digital Marketing · Video Editor",
     image: "/editors.jpg",
@@ -151,7 +145,6 @@ export default function AboutUs() {
           </p>
         </div>
 
-        {/* PHILOSOPHY — DESKTOP (UNCHANGED) */}
         <div className="philosophy-section relative z-10 mt-28 hidden md:block">
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
           <div className="space-y-28">
