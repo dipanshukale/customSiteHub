@@ -50,7 +50,7 @@ const ContactPage: React.FC = () => {
       return;
     }
 
-    setIsSending(true); // 👈 START LOADING
+    setIsSending(true);
 
     emailjs
       .send(
